@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DashboardComponent } from './dashboard.component';
 import { RouterModule } from '@angular/router';
+import { MailComponent } from './mail.component';
 
 const routes = [
 
-  { path: '', component: DashboardComponent, pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent }
+  { path: 'mail', component: MailComponent }
 
 ];
 
@@ -16,10 +15,12 @@ const routes = [
     RouterModule.forChild(routes),
   ],
   declarations: [
-    DashboardComponent
+    MailComponent
   ],
   exports: [
-    DashboardComponent
+    MailComponent
   ]
 })
-export class DashboardModule { }
+export class MailModule { }
+
+
