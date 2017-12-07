@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
 
-    $('.knob').knob();
+    // $('.knob').knob();
 
 
   }
