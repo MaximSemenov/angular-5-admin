@@ -1,11 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import { SideNavigationComponent } from '../side-navigation/side-navigation.component';
-import { ViewContainerComponent } from '../view-container/view-container.component';
-import { TopToolBarComponent } from '../top-tool-bar/top-tool-bar.component';
+
+import { AdminComponent } from './admin.component';
+
+import { SideNavigationComponent } from './side-navigation/side-navigation.component';
+import { TopToolBarComponent } from './top-tool-bar/top-tool-bar.component';
+
 import { RouterModule } from '@angular/router';
 import { Routes } from '@angular/router/src/config';
+
 import { ChartsModule } from '../charts/charts.module';
 import { MailModule } from '../mail/mail.module';
 import { PagesModule } from '../pages/pages.module';
@@ -21,9 +24,8 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AdminComponent,
     SideNavigationComponent,
-    ViewContainerComponent,
     TopToolBarComponent
   ],
   imports: [
@@ -38,6 +40,6 @@ const routes: Routes = [
     WidgetModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AdminComponent]
 })
-export class AppModule { }
+export class AdminModule { }

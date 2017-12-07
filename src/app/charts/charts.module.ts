@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ChartsComponent } from './charts.component';
 import { RouterModule } from '@angular/router';
-const routes = [
+import { Routes } from '@angular/router/src/config';
+
+const routes: Routes = [
 
   { path: 'charts', component: ChartsComponent },
 

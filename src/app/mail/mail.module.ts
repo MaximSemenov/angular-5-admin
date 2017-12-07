@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MailComponent } from './mail.component';
+import { Routes } from '@angular/router/src/config';
 
-const routes = [
+const routes: Routes = [
 
   { path: 'mail', component: MailComponent }
 
