@@ -16,6 +16,8 @@ import { DashboardModule } from '../dashboard/dashboard.module';
 import { UserInterfaceModule } from '../user-interface/user-interface.module';
 import { UsersModule } from '../users/users.module';
 import { WidgetModule } from '../widget/widget.module';
+import { SubMenuComponent } from './side-navigation/sub-menu/sub-menu.component';
+import { SideNavigationService } from './side-navigation/side-navigation.service';
 
 const routes: Routes = [
 
@@ -26,7 +28,8 @@ const routes: Routes = [
   declarations: [
     AdminComponent,
     SideNavigationComponent,
-    TopToolBarComponent
+    TopToolBarComponent,
+    SubMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,7 @@ const routes: Routes = [
     UsersModule,
     WidgetModule
   ],
-  providers: [],
+  providers: [SideNavigationService],
   bootstrap: [AdminComponent]
 })
 export class AdminModule { }
