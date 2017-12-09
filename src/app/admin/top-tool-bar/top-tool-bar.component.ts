@@ -12,9 +12,14 @@ import 'rxjs/add/operator/map';
 })
 export class TopToolBarComponent implements OnInit {
 
-  constructor(public navigationService: SideNavigationService, public activatedRoute: ActivatedRoute, public router: Router) { }
+  constructor(public navigationService: SideNavigationService, public activatedRoute: ActivatedRoute, public router: Router) {
+    this.activatedRoute.data.subscribe(data => console.log('from tool-bar', data));
+    
+   }
 
   ngOnInit() {
+
+    // this.activatedRoute.data.subscribe(data => console.log('from tool-bar', data));
 
     // this.router.events
     //   .filter(event => event instanceof NavigationStart)
@@ -22,8 +27,8 @@ export class TopToolBarComponent implements OnInit {
     //   .subscribe((event: Event) => {
     //     console.log(event);
     //   });
-console.log (this.navigationService.provideTitle())
 
+ 
 
   }
 

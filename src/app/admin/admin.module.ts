@@ -1,3 +1,4 @@
+import { DashboardComponent } from './../dashboard/dashboard.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -18,18 +19,31 @@ import { UsersModule } from '../users/users.module';
 import { WidgetModule } from '../widget/widget.module';
 import { SubMenuComponent } from './side-navigation/sub-menu/sub-menu.component';
 import { SideNavigationService } from './side-navigation/side-navigation.service';
+import { AppRootComponent } from './app-root.component';
+import { WidgetComponent } from '../widget/widget.component';
 
 const routes: Routes = [
 
+  {
+    path: '', component: AdminComponent, children: [
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'widget', component: WidgetComponent }
 
+    ]
+  }
 ];
+
+
+
 
 @NgModule({
   declarations: [
     AdminComponent,
     SideNavigationComponent,
     TopToolBarComponent,
-    SubMenuComponent
+    SubMenuComponent,
+    AppRootComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +57,6 @@ const routes: Routes = [
     WidgetModule
   ],
   providers: [SideNavigationService],
-  bootstrap: [AdminComponent]
+  bootstrap: [AppRootComponent]
 })
 export class AdminModule { }

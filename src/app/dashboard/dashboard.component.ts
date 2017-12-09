@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -9,9 +10,12 @@ import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
 })
 export class DashboardComponent implements OnInit, AfterViewInit {
 
-  constructor() { }
+  constructor(public activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+
+    this.activatedRoute.data.subscribe(data => console.log(data));
+
   }
 
   ngAfterViewInit() {

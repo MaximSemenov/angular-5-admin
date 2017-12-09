@@ -27,7 +27,7 @@
         <!-- Sidebar heading -->
         <h4>Main</h4>
         <ul class="list-unstyled">
-          <li *ngFor="let link of menuLinks" [ngClass]="link.id === 4 || link.id === 6 ? 'has_submenu open' : ''">
+          <li *ngFor="let link of menuLinks" [ngClass]="{ open : link.hasSubItems }">
             <!-- <a [routerLink]="link.routerLink" routerLinkActive="active" (click)="link.id === 4 || link.id === 6 ? toggleDropDownMenu(link.id) : ''"> -->
                 <a [routerLink]="link.routerLink" routerLinkActive="active" (click)="getTitle(link.title)">
               <i [ngClass]="link.classes.iconClasses"></i> {{link.title}} </a>
