@@ -27,25 +27,44 @@
         <!-- Sidebar heading -->
         <h4>Main</h4>
         <ul class="list-unstyled">
-          <li *ngFor="let link of menuLinks" [ngClass]="link.id === 4 || link.id === 6 ? 'has_submenu open' : ''">
-            <!-- <a [routerLink]="link.routerLink" routerLinkActive="active" (click)="link.id === 4 || link.id === 6 ? toggleDropDownMenu(link.id) : ''"> -->
-                <a [routerLink]="link.routerLink" routerLinkActive="active" (click)="getTitle(link.title)">
+          <!-- ***********************************************************
+          *************************** Menu *******************************
+          -->
+
+          <!-- <li *ngFor="let link of menuLinksNew" [ngClass]="link.id === 4 || link.id === 6 ? 'has_submenu open' : ''">
+            <a [routerLink]="link.routerLink" routerLinkActive="active" (click)="link.id === 4 || link.id === 6 ? toggleDropDownMenu(link.id) : ''">
               <i [ngClass]="link.classes.iconClasses"></i> {{link.title}} </a>
               <app-sub-menu></app-sub-menu>
-          </li>
-      
+          </li> -->
+
 
 
           <!-- Sidebar links -->
 
           <!-- Mainmenu with submenu -->
-          <li class="has_submenu">
-            <a href="#">
-              <i class="fa fa-file"></i> Pages
-              <span class="nav-caret fa fa-caret-down"></span>
+          <li>
+            <a routerLink="dashboard" routerLinkActive="active">
+              <i class="fa fa-desktop"></i> Dashboard
+            <span [ngClass]="menuLinksNew[1].spanClasses"></span>
             </a>
+          </li>
+          <li>
+            <a routerLink="widget" routerLinkActive="active">
+              <i class="fa fa-bullseye"></i> Widget
+              <span class="badge badge-danger pull-right">6</span>
+            </a>
+          </li>
+
+          <li [ngClass]="{'has_submenu': menuLinksNew[2].hasSubMenu}" routerLinkActive="active">
+            <a routerLink="pages">
+              <i [ngClass]="menuLinksNew[2].iconClasses"></i> Pages
+              <span [ngClass]="menuLinksNew[2].spanClasses"></span>
+            </a>
+
+            <app-sub-menu></app-sub-menu>
+</li>
             <!-- Submenu -->
-            <ul class="list-unstyled">
+            <!-- <ul class="list-unstyled">
               <li>
                 <a routerLink="calendar">
                   <i class="fa fa-angle-double-right"></i> Calendar</a>
@@ -74,31 +93,14 @@
                 <a href="statement.html">
                   <i class="fa fa-angle-double-right"></i> Statement</a>
               </li>
-            </ul>
+            </ul> -->
 
 
 
-          </li>
+          <!-- </li> -->
 
-        </ul>
 
-        <ul class="list-unstyled">
-          <li>
-            <a href="#" class="active">
-              <i class="fa fa-desktop"></i> Dashboard</a>
-          </li>
-          <li>
-            <a routerLink="widget">
-              <i class="fa fa-bullseye"></i> Widget
-              <span class="badge badge-danger pull-right">6</span>
-            </a>
-          </li>
-          <li>
-            <a routerLink="charts">
-              <i class="fa fa-signal"></i> Charts
-              <span class="badge badge-info pull-right">5</span>
-            </a>
-          </li>
+
           <li>
             <a routerLink="user-interface">
               <i class="fa fa-wrench"></i> UI</a>

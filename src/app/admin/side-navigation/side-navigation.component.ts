@@ -11,14 +11,54 @@ export class SideNavigationComponent implements OnInit, AfterViewInit {
 
   public menuLinks;
   public classNames = {};
+  public menuLinksNew = [
+    {
+      id: 0,
+      title: 'Dashboard',
+      routerLink: 'dashboard',
+      hasSubMenu: false,
+      iconClasses: {
+        'fa fa-desktop': true
+      },
+      spanClasses: {
+        '': false
+      }
+    },
+    {
+      id: 1,
+      title: 'Widget',
+      routerLink: 'widget',
+      hasSubMenu: false,
+      iconClasses: {
+        'fa fa-bullseye': true
+      },
+      spanClasses: {
+        '': false
+      }
+
+    },
+    {
+      id: 4,
+      title: 'Pages',
+      routerLink: 'pages',
+      hasSubMenu: true,
+      iconClasses: {
+        'fa fa-file': true,
+      },
+      spanClasses: {
+        'nav-caret fa fa-caret-down': true
+      }
+    }
+  ];
+
 
   constructor(public navigationService: SideNavigationService) { }
 
 
 
-  getTitle (title: string) {
+  getTitle(title: string) {
 
-this.navigationService.storeTitle(title);
+    this.navigationService.storeTitle(title);
 
   }
 
