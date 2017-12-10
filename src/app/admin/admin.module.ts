@@ -27,9 +27,9 @@ const routes: Routes = [
 
   {
     path: '',  component: AdminComponent, children: [
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'widget', component: WidgetComponent }
+      { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+      { path: 'dashboard', data: {title: 'Dashboard'}, component: DashboardComponent },
+      { path: 'widget', data: {title: 'Widget'}, component: WidgetComponent }
 
     ]
   }

@@ -13,9 +13,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   constructor(public activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-
-    this.activatedRoute.data.subscribe(data => console.log(data));
-
   }
 
   ngAfterViewInit() {
