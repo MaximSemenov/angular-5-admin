@@ -5,8 +5,6 @@ import { WidgetComponent } from './widget.component';
 
 
 
-
-
 @NgModule({
   imports: [
     CommonModule

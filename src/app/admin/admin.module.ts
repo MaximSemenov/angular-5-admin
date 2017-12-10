@@ -7,8 +7,8 @@ import { AdminComponent } from './admin.component';
 import { SideNavigationComponent } from './side-navigation/side-navigation.component';
 import { TopToolBarComponent } from './top-tool-bar/top-tool-bar.component';
 
-import { RouterModule } from '@angular/router';
-import { Routes } from '@angular/router/src/config';
+import { RouterModule, Routes } from '@angular/router';
+// import { Routes } from '@angular/router/src/config';
 
 import { ChartsModule } from '../charts/charts.module';
 import { MailModule } from '../mail/mail.module';
@@ -21,11 +21,12 @@ import { SubMenuComponent } from './side-navigation/sub-menu/sub-menu.component'
 import { SideNavigationService } from './side-navigation/side-navigation.service';
 import { AppRootComponent } from './app-root.component';
 import { WidgetComponent } from '../widget/widget.component';
+import { MailComponent } from '../mail/mail.component';
 
 const routes: Routes = [
 
   {
-    path: '', component: AdminComponent, children: [
+    path: '',  component: AdminComponent, children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'widget', component: WidgetComponent }
@@ -33,8 +34,6 @@ const routes: Routes = [
     ]
   }
 ];
-
-
 
 
 @NgModule({
