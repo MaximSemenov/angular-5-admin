@@ -16,7 +16,7 @@ export class SideNavigationService {
     {
       id: 0,
       title: 'Dashboard',
-      routerLink: 'dashboard',
+      routerLink: '/dashboard',
       classes: {
         iconClasses: 'fa fa-desktop',
       }
@@ -24,7 +24,7 @@ export class SideNavigationService {
     {
       id: 1,
       title: 'Widget',
-      routerLink: 'widget',
+      routerLink: '/widget',
       classes: {
         iconClasses: 'fa fa-bullseye',
       }
