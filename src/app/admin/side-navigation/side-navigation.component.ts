@@ -13,7 +13,7 @@ export class SideNavigationComponent implements OnInit {
   public menuLinksNew = [
     {
       title: 'Dashboard',
-      routerLink: 'dashboard',
+      routerLink: '/dashboard',
       hasSubMenu: false,
       isSubMenuShown: false,
       iconClasses: {
@@ -25,7 +25,7 @@ export class SideNavigationComponent implements OnInit {
     },
     {
       title: 'Widget',
-      routerLink: 'widget',
+      routerLink: '/widget',
       hasSubMenu: false,
       isSubMenuShown: false,
       iconClasses: {
@@ -39,7 +39,7 @@ export class SideNavigationComponent implements OnInit {
 
     {
       title: 'Charts',
-      routerLink: 'charts',
+      routerLink: '/charts',
       hasSubMenu: false,
       isSubMenuShown: false,
       iconClasses: {
@@ -53,7 +53,7 @@ export class SideNavigationComponent implements OnInit {
 
     {
       title: 'UI',
-      routerLink: 'user-interface',
+      routerLink: '/user-interface',
       hasSubMenu: false,
       isSubMenuShown: false,
       iconClasses: {
@@ -67,7 +67,7 @@ export class SideNavigationComponent implements OnInit {
 
     {
       title: 'Pages',
-      routerLink: 'pages',
+      routerLink: '/pages',
       hasSubMenu: true,
       isSubMenuShown: false,
       iconClasses: {
@@ -83,7 +83,7 @@ export class SideNavigationComponent implements OnInit {
 
     {
       title: 'Users',
-      routerLink: 'users',
+      routerLink: '/users',
       hasSubMenu: false,
       isSubMenuShown: false,
       iconClasses: {
@@ -97,7 +97,7 @@ export class SideNavigationComponent implements OnInit {
 
     {
       title: 'Mail',
-      routerLink: 'mail',
+      routerLink: '/mail',
       hasSubMenu: true,
       isSubMenuShown: false,
       iconClasses: {
