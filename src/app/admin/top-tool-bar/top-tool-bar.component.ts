@@ -21,8 +21,7 @@ export class TopToolBarComponent implements OnInit {
     //   .map(() => this.router.routerState.root)
     //   .subscribe((event: Event) => {
     //     console.log(event);
-    //   });
-console.log (this.navigationService.provideTitle())
+
 
 
   }

@@ -79,15 +79,6 @@ export class SideNavigationService {
     return this.menuLinks;
   }
 
-  storeTitle(title) {
 
-    this.title = title;
-  }
-
-  provideTitle() {
-
-    return this.title;
-
-  }
 
 }

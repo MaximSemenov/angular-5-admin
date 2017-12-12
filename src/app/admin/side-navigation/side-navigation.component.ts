@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { SideNavigationService } from './side-navigation.service';
 
 @Component({
@@ -7,16 +6,16 @@ import { SideNavigationService } from './side-navigation.service';
   templateUrl: './side-navigation.component.html',
   styleUrls: ['./side-navigation.component.css']
 })
-export class SideNavigationComponent implements OnInit, AfterViewInit {
+export class SideNavigationComponent implements OnInit {
 
   public menuLinks;
-  public classNames = {};
+  public lastSubMenuOpened;
   public menuLinksNew = [
     {
-      id: 0,
       title: 'Dashboard',
       routerLink: 'dashboard',
       hasSubMenu: false,
+      isSubMenuShown: false,
       iconClasses: {
         'fa fa-desktop': true
       },
@@ -25,89 +24,159 @@ export class SideNavigationComponent implements OnInit, AfterViewInit {
       }
     },
     {
-      id: 1,
       title: 'Widget',
       routerLink: 'widget',
       hasSubMenu: false,
+      isSubMenuShown: false,
       iconClasses: {
         'fa fa-bullseye': true
       },
       spanClasses: {
-        '': false
+        '': true
       }
 
     },
+
     {
-      id: 4,
+      title: 'Charts',
+      routerLink: 'charts',
+      hasSubMenu: false,
+      isSubMenuShown: false,
+      iconClasses: {
+        'fa fa-signal': true
+      },
+      spanClasses: {
+        '': true
+      }
+
+    },
+
+    {
+      title: 'UI',
+      routerLink: 'user-interface',
+      hasSubMenu: false,
+      isSubMenuShown: false,
+      iconClasses: {
+        'fa fa-wrench': true
+      },
+      spanClasses: {
+        '': true
+      }
+
+    },
+
+    {
       title: 'Pages',
       routerLink: 'pages',
       hasSubMenu: true,
+      isSubMenuShown: false,
       iconClasses: {
         'fa fa-file': true,
       },
       spanClasses: {
-        'nav-caret fa fa-caret-down': true
+        'nav-caret': true,
+        'fa': true,
+        'fa-caret-down': true,
+        'fa-caret-up': false
+      }
+    },
+
+    {
+      title: 'Users',
+      routerLink: 'users',
+      hasSubMenu: false,
+      isSubMenuShown: false,
+      iconClasses: {
+        'fa fa-user': true
+      },
+      spanClasses: {
+        '': true
+      }
+
+    },
+
+    {
+      title: 'Mail',
+      routerLink: 'mail',
+      hasSubMenu: true,
+      isSubMenuShown: false,
+      iconClasses: {
+        'fa fa-file': true,
+      },
+      spanClasses: {
+        'nav-caret': true,
+        'fa': true,
+        'fa-caret-down': true,
+        'fa-caret-up': false
       }
     }
+
   ];
 
 
   constructor(public navigationService: SideNavigationService) { }
-
-
-
-  getTitle(title: string) {
-
-    this.navigationService.storeTitle(title);
-
-  }
-
-  toggleDropDownMenu(id) {
-
-    alert('Works!' + id);
-
-  }
-
-  setClassName(className: string) {
-
-    if (this.classNames[className]) {
-      this.classNames[className] = false;
-      return;
-    }
-    this.classNames[className] = true;
-  }
 
   ngOnInit() {
 
 
     this.menuLinks = this.navigationService.getNavigationLinks();
 
-    this.navigationService.storeTitle('abc');
+
   }
 
-  ngAfterViewInit() { }
-  // $(document).ready(function() {
+  showSubMenu(link): void {
+
+    // если у ссылки нет сабменю и подменю ранее не открывалось = сразу return;
+    if (!link.hasSubMenu && this.lastSubMenuOpened === undefined) {
+      return;
+    }
+
+    // открытие и закрытие меню при клике на него повторно
+    if (this.lastSubMenuOpened === link) {
+
+      this.lastSubMenuOpened.isSubMenuShown = !this.lastSubMenuOpened.isSubMenuShown;
+      this.flipCaret(link, false);
+      this.lastSubMenuOpened = link;
+      return;
+    }
+
+    // сабменю ранее открывалось и произошел клик по обычной ссылке без сабменю = закрытие ранее открытого сабменю
+    if (this.lastSubMenuOpened && !link.hasSubMenu) {
+
+      this.lastSubMenuOpened.isSubMenuShown = false;
+      this.flipCaret(this.lastSubMenuOpened, true);
+      return;
+    }
+    // клик по ссылке с сабменю, предыдущий клик был осуществелн по сабменю = закрытие предыдущего сабменю
+    if (this.lastSubMenuOpened) {
+
+      this.lastSubMenuOpened.isSubMenuShown = false;
+      this.flipCaret(this.lastSubMenuOpened, true);
+    }
+    // открытие сабменю с текущего клика
+    link.isSubMenuShown = !link.isSubMenuShown;
+    // переворот каретки
+    this.flipCaret(link, false);
+    // запись объекта в переменную (ссылка на объект!) у которого открылось самменю
+    this.lastSubMenuOpened = link;
+  }
+
+  flipCaret(toggle, toDefault): void {
+
+    if (toDefault) {
+      toggle.spanClasses['fa-caret-down'] = true;
+      toggle.spanClasses['fa-caret-up'] = false;
+      return;
+    }
+
+    toggle.spanClasses['fa-caret-down'] = !toggle.spanClasses['fa-caret-down'];
+    toggle.spanClasses['fa-caret-up'] = !toggle.spanClasses['fa-caret-up'];
+
+  }
+  closeSubMenu() {
+
+  }
 
 
-  //   $('.has_submenu > a').click(function (e) {
-  //     e.preventDefault();
-  //     const menu_li = $(this).parent('li');
-  //     const menu_ul = $(this).next('ul');
-
-  //     if (menu_li.hasClass('open')) {
-  //       menu_ul.slideUp(150);
-  //       menu_li.removeClass('open');
-  //       $(this).find('span').removeClass('fa-caret-up').addClass('fa-caret-down');
-  //     } else {
-  //       $('.side-nav > li > ul').slideUp(150);
-  //       $('.side-nav > li').removeClass('open');
-  //       menu_ul.slideDown(150);
-  //       menu_li.addClass('open');
-  //       $(this).find('span').removeClass('fa-caret-down').addClass('fa-caret-up');
-  //     }
-  //   });
-
-  // });
-  // }
 
 }
