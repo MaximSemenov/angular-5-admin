@@ -6,14 +6,14 @@ import { PagesComponent } from './pages.component';
 import { Routes } from '@angular/router/src/config';
 
 const routes: Routes = [
-  { path: 'pages', component: PagesComponent },
+
   { path: 'calendar', component: CalendarComponent }
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(routes),
+    RouterModule.forChild(routes)
   ],
   declarations: [
     CalendarComponent,

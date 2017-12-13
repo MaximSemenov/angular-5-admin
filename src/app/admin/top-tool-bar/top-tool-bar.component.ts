@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SideNavigationService } from '../side-navigation/side-navigation.service';
-import { ActivatedRoute, Router, Event, NavigationStart } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 
@@ -12,19 +13,26 @@ import 'rxjs/add/operator/map';
 })
 export class TopToolBarComponent implements OnInit {
 
+  // type for navigationTitle...
+  public navigationTitle;
+
   constructor(public navigationService: SideNavigationService, public activatedRoute: ActivatedRoute, public router: Router) {
-   }
+  }
 
   ngOnInit() {
+    this.router.events
+      .filter((event: NavigationEnd) => event instanceof NavigationEnd)
+      .map(() => {
+        let route: ActivatedRoute = this.activatedRoute;
+        while (route.firstChild) {
+          route = route.firstChild;
+        }
+        return route;
+      })
+      .switchMap((currentRoute: ActivatedRoute) => currentRoute.data)
+      .pluck('title')
+      .subscribe(title => this.navigationTitle = title);
 
-    // this.router.events
-    //   .filter(event => event instanceof NavigationStart)
-    //   .map(() => this.router.routerState.root)
-    //   .subscribe((event: Event) => {
-    //     console.log(event);
-    //   });
-
- 
 
   }
 

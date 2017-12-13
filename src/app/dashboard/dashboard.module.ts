@@ -6,7 +6,7 @@ import { LatestUpdatesComponent } from './latest-updates/latest-updates.componen
 import { KnobComponent } from './knob/knob.component';
 import { CurrentStatusComponent } from './current-status/current-status.component';
 import { ProjectsComponent } from './projects/projects.component';
-import { ChatsComponent } from './chats/chats.component';
+import { ChartsComponent } from './charts/charts.component';
 import { TasksComponent } from './tasks/tasks.component';
 
 
@@ -21,7 +21,7 @@ import { TasksComponent } from './tasks/tasks.component';
     KnobComponent,
     CurrentStatusComponent,
     ProjectsComponent,
-    ChatsComponent,
+    ChartsComponent,
     TasksComponent
   ],
   exports: [

@@ -1,3 +1,6 @@
+import { MailComponent } from './../mail/mail.component';
+import { PagesComponent } from './../pages/pages.component';
+import { ChartsComponent } from './../dashboard/charts/charts.component';
 import { DashboardComponent } from './../dashboard/dashboard.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -21,15 +24,22 @@ import { SubMenuComponent } from './side-navigation/sub-menu/sub-menu.component'
 import { SideNavigationService } from './side-navigation/side-navigation.service';
 import { AppRootComponent } from './app-root.component';
 import { WidgetComponent } from '../widget/widget.component';
-import { MailComponent } from '../mail/mail.component';
+import { UserInterfaceComponent } from '../user-interface/user-interface.component';
+import { UsersComponent } from '../users/users.component';
+import { CalendarComponent } from '../pages/calendar/calendar.component';
 
 const routes: Routes = [
 
   {
-    path: '',  component: AdminComponent, children: [
+    path: '', component: AdminComponent, children: [
       { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-      { path: 'dashboard', data: {title: 'Dashboard'}, component: DashboardComponent },
-      { path: 'widget', data: {title: 'Widget'}, component: WidgetComponent }
+      { path: 'dashboard', data: { title: 'Dashboard' }, component: DashboardComponent },
+      { path: 'widget', data: { title: 'Widget' }, component: WidgetComponent },
+      { path: 'charts', data: { title: 'Charts' }, component: ChartsComponent },
+      { path: 'user-interface', data: { title: 'User Interface' }, component: UserInterfaceComponent },
+      { path: 'pages', data: { title: 'Pages' }, component: PagesComponent },
+      { path: 'users', data: { title: 'Users' }, component: UsersComponent },
+      { path: 'mail', data: { title: 'Mail' }, component: MailComponent }
 
     ]
   }
