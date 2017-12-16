@@ -8,77 +8,147 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/first';
 import 'rxjs/add/observable/of';
 
+export type menuLink = {
+
+  title: string;
+  routerLink: string;
+  hasSubMenu: boolean;
+  isSubMenuShown: boolean;
+  iconClasses: iconClasses;
+  spanClasses: spanClasses;
+
+};
+
+export type iconClasses = {
+  [key: string]: boolean;
+
+};
+export type spanClasses = {
+  [key: string]: boolean;
+
+};
+
+
 @Injectable()
 export class SideNavigationService {
 
-  public title;
-  private menuLinks = [
+  public menuLinks: menuLink[] = [
     {
-      id: 0,
       title: 'Dashboard',
       routerLink: '/dashboard',
-      classes: {
-        iconClasses: 'fa fa-desktop',
+      hasSubMenu: false,
+      isSubMenuShown: false,
+      iconClasses: {
+        'fa fa-desktop': true
+      },
+      spanClasses: {
+        '': false
       }
     },
     {
-      id: 1,
       title: 'Widget',
       routerLink: '/widget',
-      classes: {
-        iconClasses: 'fa fa-bullseye',
+      hasSubMenu: false,
+      isSubMenuShown: false,
+      iconClasses: {
+        'fa fa-bullseye': true
+      },
+      spanClasses: {
+        '': true
       }
+
     },
+
     {
-      id: 2,
       title: 'Charts',
-      routerLink: 'charts',
-      classes: {
-        iconClasses: 'fa fa-signal',
+      routerLink: '/charts',
+      hasSubMenu: false,
+      isSubMenuShown: false,
+      iconClasses: {
+        'fa fa-signal': true
+      },
+      spanClasses: {
+        '': true
       }
+
     },
+
     {
-      id: 3,
       title: 'UI',
-      routerLink: 'user-interface',
-      classes: {
-        iconClasses: 'fa fa-wrench',
+      routerLink: '/user-interface',
+      hasSubMenu: false,
+      isSubMenuShown: false,
+      iconClasses: {
+        'fa fa-wrench': true
+      },
+      spanClasses: {
+        '': true
       }
+
     },
+
     {
-      id: 4,
       title: 'Pages',
-      routerLink: 'pages',
-      classes: {
-        iconClasses: 'fa fa-file',
+      routerLink: '/pages',
+      hasSubMenu: true,
+      isSubMenuShown: false,
+      iconClasses: {
+        'fa fa-file': true,
+      },
+      spanClasses: {
+        'nav-caret': true,
+        'fa': true,
+        'fa-caret-down': true,
+        'fa-caret-up': false
       }
     },
+
     {
-      id: 5,
       title: 'Users',
-      routerLink: 'users',
-      classes: {
-        iconClasses: 'fa fa-user',
-
+      routerLink: '/users',
+      hasSubMenu: false,
+      isSubMenuShown: false,
+      iconClasses: {
+        'fa fa-user': true
+      },
+      spanClasses: {
+        '': true
       }
-    },
-    {
-      id: 6,
-      title: 'Mail',
-      routerLink: 'mail',
-      classes: {
-        iconClasses: 'fa fa-envelope',
 
+    },
+
+    {
+      title: 'Mail',
+      routerLink: '/mail',
+      hasSubMenu: true,
+      isSubMenuShown: false,
+      iconClasses: {
+        'fa fa-file': true,
+      },
+      spanClasses: {
+        'nav-caret': true,
+        'fa': true,
+        'fa-caret-down': true,
+        'fa-caret-up': false
       }
     }
+
   ];
 
   constructor() { }
 
-  getNavigationLinks() {
+  getNavigationLinks(): menuLink[] {
     return this.menuLinks;
   }
 
+  getIconClasses(title) {
+    return Observable.of(this.menuLinks
+      .filter(menuLink => menuLink.title === title)[0].iconClasses)
+      .map(iconClasse => {
 
+        return Object.keys(iconClasse)[0];
 
+      });
+
+  }
 }

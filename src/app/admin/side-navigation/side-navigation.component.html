@@ -27,12 +27,12 @@
         <h4>Main</h4>
         <ul class="list-unstyled">
 
-          <li *ngFor="let link of menuLinksNew" [ngClass]="{'has_submenu': link.hasSubMenu}">
+          <li *ngFor="let link of menuLinks" [ngClass]="{'has_submenu': link.hasSubMenu}">
             <a [routerLink]="link.routerLink" routerLinkActive="active" (click)="showSubMenu(link)">
               <i [ngClass]="link.iconClasses"></i> {{link.title}}
               <span [ngClass]="link.spanClasses"></span>
             </a>
-            <app-sub-menu *ngIf="link.isSubMenuShown" [subMenuStatus]="menuLinksNew"></app-sub-menu>
+            <app-sub-menu *ngIf="link.isSubMenuShown" [subMenuStatus]="menuLinks"></app-sub-menu>
 
           </li>
 

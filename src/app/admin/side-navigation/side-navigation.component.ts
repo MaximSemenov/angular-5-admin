@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SideNavigationService } from './side-navigation.service';
+import { SideNavigationService, menuLink } from './side-navigation.service';
+
 
 @Component({
   selector: 'app-side-navigation',
@@ -8,119 +9,15 @@ import { SideNavigationService } from './side-navigation.service';
 })
 export class SideNavigationComponent implements OnInit {
 
-  public menuLinks;
+  public menuLinks: menuLink[];
   public lastSubMenuOpened;
-  public menuLinksNew = [
-    {
-      title: 'Dashboard',
-      routerLink: '/dashboard',
-      hasSubMenu: false,
-      isSubMenuShown: false,
-      iconClasses: {
-        'fa fa-desktop': true
-      },
-      spanClasses: {
-        '': false
-      }
-    },
-    {
-      title: 'Widget',
-      routerLink: '/widget',
-      hasSubMenu: false,
-      isSubMenuShown: false,
-      iconClasses: {
-        'fa fa-bullseye': true
-      },
-      spanClasses: {
-        '': true
-      }
-
-    },
-
-    {
-      title: 'Charts',
-      routerLink: '/charts',
-      hasSubMenu: false,
-      isSubMenuShown: false,
-      iconClasses: {
-        'fa fa-signal': true
-      },
-      spanClasses: {
-        '': true
-      }
-
-    },
-
-    {
-      title: 'UI',
-      routerLink: '/user-interface',
-      hasSubMenu: false,
-      isSubMenuShown: false,
-      iconClasses: {
-        'fa fa-wrench': true
-      },
-      spanClasses: {
-        '': true
-      }
-
-    },
-
-    {
-      title: 'Pages',
-      routerLink: '/pages',
-      hasSubMenu: true,
-      isSubMenuShown: false,
-      iconClasses: {
-        'fa fa-file': true,
-      },
-      spanClasses: {
-        'nav-caret': true,
-        'fa': true,
-        'fa-caret-down': true,
-        'fa-caret-up': false
-      }
-    },
-
-    {
-      title: 'Users',
-      routerLink: '/users',
-      hasSubMenu: false,
-      isSubMenuShown: false,
-      iconClasses: {
-        'fa fa-user': true
-      },
-      spanClasses: {
-        '': true
-      }
-
-    },
-
-    {
-      title: 'Mail',
-      routerLink: '/mail',
-      hasSubMenu: true,
-      isSubMenuShown: false,
-      iconClasses: {
-        'fa fa-file': true,
-      },
-      spanClasses: {
-        'nav-caret': true,
-        'fa': true,
-        'fa-caret-down': true,
-        'fa-caret-up': false
-      }
-    }
-
-  ];
 
 
   constructor(public navigationService: SideNavigationService) { }
 
   ngOnInit() {
 
-
     this.menuLinks = this.navigationService.getNavigationLinks();
-
 
   }
 
@@ -153,6 +50,8 @@ export class SideNavigationComponent implements OnInit {
       this.lastSubMenuOpened.isSubMenuShown = false;
       this.flipCaret(this.lastSubMenuOpened, true);
     }
+
+
     // открытие сабменю с текущего клика
     link.isSubMenuShown = !link.isSubMenuShown;
     // переворот каретки
@@ -173,10 +72,5 @@ export class SideNavigationComponent implements OnInit {
     toggle.spanClasses['fa-caret-up'] = !toggle.spanClasses['fa-caret-up'];
 
   }
-  closeSubMenu() {
-
-  }
-
-
 
 }
