@@ -15,9 +15,8 @@ export class TopToolBarComponent implements OnInit {
 
 
   public menuLinks: menuLink[];
-      // type for navigationTitle...
+  // type for navigationTitle...
   public navigationTitle;
-    // type for iconClasses...
   public iconClasses: iconClasses = {
     'lblue': false
   };
@@ -46,8 +45,12 @@ export class TopToolBarComponent implements OnInit {
         return this.navigationService.getIconClasses(title);
       })
       .subscribe(iconClasse => {
-        this.iconClasses[iconClasse] = true;
-        this.iconClasses.lblue = true;
+
+        const classes = {};
+        classes[iconClasse] = true;
+        classes['lblue'] = true;
+
+        this.iconClasses = classes;
       });
 
 

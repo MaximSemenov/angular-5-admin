@@ -145,7 +145,7 @@ export class SideNavigationService {
     return Observable.of(this.menuLinks
       .filter(menuLink => menuLink.title === title)[0].iconClasses)
       .map(iconClasse => {
-
+        console.log(Object.keys(iconClasse)[0]);
         return Object.keys(iconClasse)[0];
 
       });
