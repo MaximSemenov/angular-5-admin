@@ -17,9 +17,7 @@ export class TopToolBarComponent implements OnInit {
   public menuLinks: menuLink[];
   // type for navigationTitle...
   public navigationTitle;
-  public iconClasses: iconClasses = {
-    'lblue': false
-  };
+  public iconClass: string = '';
 
 
   constructor(public navigationService: SideNavigationService, public activatedRoute: ActivatedRoute, public router: Router) {
@@ -40,20 +38,20 @@ export class TopToolBarComponent implements OnInit {
       })
       .switchMap((currentRoute: ActivatedRoute) => currentRoute.data)
       .pluck('title')
-      .switchMap(title => {
+      .subscribe((title: string) => {
+
         this.navigationTitle = title;
-        return this.navigationService.getIconClasses(title);
-      })
-      .subscribe(iconClasse => {
+        this.iconClass = this.navigationService.getIconClass(title);
 
-        const classes = {};
-        classes[iconClasse] = true;
-        classes['lblue'] = true;
-
-        this.iconClasses = classes;
       });
 
 
   }
 
 }
+
+
+
+
+
+

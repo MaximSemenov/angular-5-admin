@@ -11,11 +11,11 @@ import 'rxjs/add/observable/of';
 export type menuLink = {
 
   title: string;
+  key: string;
   routerLink: string;
   hasSubMenu: boolean;
   isSubMenuShown: boolean;
-  iconClasses: iconClasses;
-  spanClasses: spanClasses;
+  // spanClasses: spanClasses;
 
 };
 
@@ -32,105 +32,111 @@ export type spanClasses = {
 @Injectable()
 export class SideNavigationService {
 
+  public titleIconsClasses = {
+    dashboard: 'fa-desktop',
+    widget: 'fa-bullseye',
+    charts: 'fa-signal',
+    ui: 'fa-wrench',
+    pages: 'fa-file',
+    users: 'fa-user',
+    mail: 'fa-file'
+  };
+
+  public spanClasses = {
+    dashboard: '',
+    widget: '',
+    charts: '',
+    ui: '',
+    pages: 'fa-file',
+    user: '',
+    mail: 'fa-file'
+  };
+
   public menuLinks: menuLink[] = [
     {
       title: 'Dashboard',
+      key: 'dashboard',
       routerLink: '/dashboard',
       hasSubMenu: false,
-      isSubMenuShown: false,
-      iconClasses: {
-        'fa fa-desktop': true
-      },
-      spanClasses: {
-        '': false
-      }
+      isSubMenuShown: false
+      // spanClasses: {
+      //   '': false
+      // }
     },
     {
       title: 'Widget',
+      key: 'widget',
       routerLink: '/widget',
       hasSubMenu: false,
-      isSubMenuShown: false,
-      iconClasses: {
-        'fa fa-bullseye': true
-      },
-      spanClasses: {
-        '': true
-      }
+      isSubMenuShown: false
+      // spanClasses: {
+      //   '': true
+      // }
 
     },
 
     {
       title: 'Charts',
+      key: 'charts',
       routerLink: '/charts',
       hasSubMenu: false,
-      isSubMenuShown: false,
-      iconClasses: {
-        'fa fa-signal': true
-      },
-      spanClasses: {
-        '': true
-      }
+      isSubMenuShown: false
+      // spanClasses: {
+      //   '': true
+      // }
 
     },
 
     {
       title: 'UI',
+      key: 'ui',
       routerLink: '/user-interface',
       hasSubMenu: false,
-      isSubMenuShown: false,
-      iconClasses: {
-        'fa fa-wrench': true
-      },
-      spanClasses: {
-        '': true
-      }
+      isSubMenuShown: false
+      // spanClasses: {
+      //   '': true
+      // }
 
     },
 
     {
       title: 'Pages',
+      key: 'pages',
       routerLink: '/pages',
       hasSubMenu: true,
-      isSubMenuShown: false,
-      iconClasses: {
-        'fa fa-file': true,
-      },
-      spanClasses: {
-        'nav-caret': true,
-        'fa': true,
-        'fa-caret-down': true,
-        'fa-caret-up': false
-      }
+      isSubMenuShown: false
+      // spanClasses: {
+      //   'nav-caret': true,
+      //   'fa': true,
+      //   'fa-caret-down': true,
+      //   'fa-caret-up': false
+      // }
     },
 
     {
       title: 'Users',
+      key: 'users',
       routerLink: '/users',
       hasSubMenu: false,
-      isSubMenuShown: false,
-      iconClasses: {
-        'fa fa-user': true
-      },
-      spanClasses: {
-        '': true
-      }
+      isSubMenuShown: false
+      // spanClasses: {
+      //   '': true
+      // }
 
     },
 
     {
       title: 'Mail',
+      key: 'mail',
       routerLink: '/mail',
       hasSubMenu: true,
-      isSubMenuShown: false,
-      iconClasses: {
-        'fa fa-file': true,
-      },
-      spanClasses: {
-        'nav-caret': true,
-        'fa': true,
-        'fa-caret-down': true,
-        'fa-caret-up': false
-      }
+      isSubMenuShown: false
+      // spanClasses: {
+      //   'nav-caret': true,
+      //   'fa': true,
+      //   'fa-caret-down': true,
+      //   'fa-caret-up': false
+      // }
     }
 
   ];
@@ -139,16 +145,19 @@ export class SideNavigationService {
 
   getNavigationLinks(): menuLink[] {
     return this.menuLinks;
+
+  }
+  getIconClasses() {
+    return this.titleIconsClasses;
+
   }
 
-  getIconClasses(title) {
-    return Observable.of(this.menuLinks
-      .filter(menuLink => menuLink.title === title)[0].iconClasses)
-      .map(iconClasse => {
-        console.log(Object.keys(iconClasse)[0]);
-        return Object.keys(iconClasse)[0];
 
-      });
+
+  getIconClass(title: string): string {
+
+    return this.titleIconsClasses[this.menuLinks.find(link => link.title === title).key];
+
 
   }
 }
