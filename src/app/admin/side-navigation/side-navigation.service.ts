@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/first';
 import 'rxjs/add/observable/of';
+import { error } from 'selenium-webdriver';
 
 export type menuLink = {
 
@@ -14,7 +15,8 @@ export type menuLink = {
   key: string;
   routerLink: string;
   hasSubMenu: boolean;
-  isSubMenuShown: boolean;
+  isSubMenuShown?: boolean;
+  // isSubMenuShown: boolean;
   // spanClasses: spanClasses;
 
 };
@@ -47,9 +49,9 @@ export class SideNavigationService {
     widget: '',
     charts: '',
     ui: '',
-    pages: 'fa-file',
+    pages: 'fa nav-caret fa-caret-down',
     user: '',
-    mail: 'fa-file'
+    mail: 'fa nav-caret fa-caret-down'
   };
 
   public menuLinks: menuLink[] = [
@@ -57,8 +59,8 @@ export class SideNavigationService {
       title: 'Dashboard',
       key: 'dashboard',
       routerLink: '/dashboard',
-      hasSubMenu: false,
-      isSubMenuShown: false
+      hasSubMenu: false
+      // isSubMenuShown: false
       // spanClasses: {
       //   '': false
       // }
@@ -67,8 +69,7 @@ export class SideNavigationService {
       title: 'Widget',
       key: 'widget',
       routerLink: '/widget',
-      hasSubMenu: false,
-      isSubMenuShown: false
+      hasSubMenu: false
       // spanClasses: {
       //   '': true
       // }
@@ -79,8 +80,8 @@ export class SideNavigationService {
       title: 'Charts',
       key: 'charts',
       routerLink: '/charts',
-      hasSubMenu: false,
-      isSubMenuShown: false
+      hasSubMenu: false
+      // isSubMenuShown: false
       // spanClasses: {
       //   '': true
       // }
@@ -91,8 +92,8 @@ export class SideNavigationService {
       title: 'UI',
       key: 'ui',
       routerLink: '/user-interface',
-      hasSubMenu: false,
-      isSubMenuShown: false
+      hasSubMenu: false
+      // isSubMenuShown: false
       // spanClasses: {
       //   '': true
       // }
@@ -117,8 +118,8 @@ export class SideNavigationService {
       title: 'Users',
       key: 'users',
       routerLink: '/users',
-      hasSubMenu: false,
-      isSubMenuShown: false
+      hasSubMenu: false
+      // isSubMenuShown: false
       // spanClasses: {
       //   '': true
       // }
@@ -147,8 +148,14 @@ export class SideNavigationService {
     return this.menuLinks;
 
   }
-  getIconClasses() {
-    return this.titleIconsClasses;
+  getClasses(classRequest): {any} {
+
+    if (!this[classRequest]) {
+      throw Error (
+        `"SideNavigationService" does not have "${classRequest}" object you have requested. Check spelling or if that object even exists"`);
+    }
+
+    return this[classRequest];
 
   }
 

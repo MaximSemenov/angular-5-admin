@@ -12,6 +12,7 @@ export class SideNavigationComponent implements OnInit {
   public menuLinks: menuLink[];
   public lastSubMenuOpened;
   public iconClasses;
+  public spanClasses;
 
 
   constructor(public navigationService: SideNavigationService) { }
@@ -19,7 +20,9 @@ export class SideNavigationComponent implements OnInit {
   ngOnInit() {
 
     this.menuLinks = this.navigationService.getNavigationLinks();
-    this.iconClasses = this.navigationService.getIconClasses();
+    this.iconClasses = this.navigationService.getClasses('titleIconsClasses');
+    this.spanClasses = this.navigationService.getClasses('spanClasses');
+
   }
 
   showSubMenu(link): void {
