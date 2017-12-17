@@ -51,7 +51,8 @@ export class SideNavigationService {
     ui: '',
     pages: 'fa nav-caret fa-caret-down',
     user: '',
-    mail: 'fa nav-caret fa-caret-down'
+    mail: 'fa nav-caret fa-caret-down',
+
   };
 
   public menuLinks: menuLink[] = [

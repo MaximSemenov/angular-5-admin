@@ -30,7 +30,8 @@
           <li *ngFor="let link of menuLinks" [ngClass]="{'has_submenu': link.hasSubMenu}">
             <a [routerLink]="link.routerLink" routerLinkActive="active" (click)="showSubMenu(link)">
               <i [ngClass]="['fa', iconClasses[link.key]]"></i> {{link.title}}
-              <span [ngClass]="spanClasses[link.key]"></span>
+              <!-- <span [ngClass]="spanClasses[link.key]"></span> -->
+              <span [ngClass]="{'fa nav-caret fa-caret-down': link.hasSubMenu, 'fa-caret-up': link.isSubMenuShown }"></span>
             </a>
             <app-sub-menu *ngIf="link.isSubMenuShown" [subMenuStatus]="menuLinks"></app-sub-menu>
 
