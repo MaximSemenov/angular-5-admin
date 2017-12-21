@@ -27,17 +27,17 @@
         <h4>Main</h4>
         <ul class="list-unstyled">
 
-          <li *ngFor="let link of menuLinks" [ngClass]="{'has_submenu': link.hasSubMenu}">
-            <a [routerLink]="link.routerLink" routerLinkActive="active" (click)="showSubMenu(link)">
+          <li  *ngFor="let link of menuLinks" [ngClass]="{'has_submenu': link.hasSubMenu}">
+            <a [routerLink]="link.routerLink"
+             routerLinkActive="active" 
+             (click)="link.hasSubMenu ? toggleSubMenu(link) : closeSubMenus()">
               <i [ngClass]="['fa', iconClasses[link.key]]"></i> {{link.title}}
               <!-- <span [ngClass]="spanClasses[link.key]"></span> -->
-              
-              <span *ngIf="link.hasSubMenu"
-               class="fa nav-caret"
-               [ngClass]="{'fa-caret-down': !link.isSubMenuShown, 'fa-caret-up': link.isSubMenuShown}"></span>
+
+              <span *ngIf="link.hasSubMenu" class="fa nav-caret" [ngClass]="{'fa-caret-down': !link.isSubMenuShown, 'fa-caret-up': link.isSubMenuShown}"></span>
 
             </a>
-            <app-sub-menu *ngIf="link.isSubMenuShown" [subMenuStatus]="menuLinks"></app-sub-menu>
+            <app-sub-menu  *ngIf="link.isSubMenuShown" [subMenuStatus]="menuLinks"></app-sub-menu>
 
           </li>
 

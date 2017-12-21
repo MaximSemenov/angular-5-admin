@@ -1,6 +1,6 @@
-<ul *ngIf="subMenuStatus[4].isSubMenuShown" class="list-unstyled">
+<ul *ngIf="subMenuStatus[4].isSubMenuShown" @slide class="list-unstyled">
     <li>
-        <a routerLink="/calendar">
+        <a routerLink="/calendar"> 
             <i class="fa fa-angle-double-right"></i> Calendar</a>
     </li>
     <li>
@@ -29,7 +29,7 @@
     </li>
 </ul>
 
-<ul *ngIf="subMenuStatus[6].isSubMenuShown" class="list-unstyled">
+<ul *ngIf="subMenuStatus[6].isSubMenuShown" @slide class="list-unstyled">
     <li>
         <a href="inbox.html">
             <i class="fa fa-angle-double-right"></i> Inbox</a>

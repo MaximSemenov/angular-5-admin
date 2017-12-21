@@ -27,6 +27,7 @@ import { WidgetComponent } from '../widget/widget.component';
 import { UserInterfaceComponent } from '../user-interface/user-interface.component';
 import { UsersComponent } from '../users/users.component';
 import { CalendarComponent } from '../pages/calendar/calendar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Routes = [
 
@@ -63,7 +64,8 @@ const routes: Routes = [
     PagesModule,
     UserInterfaceModule,
     UsersModule,
-    WidgetModule
+    WidgetModule,
+    BrowserAnimationsModule
   ],
   providers: [SideNavigationService],
   bootstrap: [AppRootComponent]

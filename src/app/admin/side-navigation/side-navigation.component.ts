@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { SideNavigationService, menuLink } from './side-navigation.service';
 
 
+
 @Component({
   selector: 'app-side-navigation',
   templateUrl: './side-navigation.component.html',
-  styleUrls: ['./side-navigation.component.css']
+  styleUrls: ['./side-navigation.component.css'],
+
 })
+
 export class SideNavigationComponent implements OnInit {
 
   public menuLinks: menuLink[];
@@ -25,20 +28,22 @@ export class SideNavigationComponent implements OnInit {
 
   }
 
-  showSubMenu(link): void {
-
-    if (!link.hasSubMenu && this.lastSubMenuOpened === undefined) {
+  toggleSubMenu(link): void {
+    const isOpenedLastTime = link.isSubMenuShown;
+    this.closeSubMenus();
+    if (isOpenedLastTime) {
       return;
     }
-
-    if (!link.hasSubMenu) {
-      this.lastSubMenuOpened.isSubMenuShown = false;
-      return;
-    }
-
     link.isSubMenuShown = !link.isSubMenuShown;
-    this.lastSubMenuOpened = link;
+  }
 
+  closeSubMenus() {
+    this.menuLinks.forEach((mmenuLink: menuLink) => {
+      mmenuLink.isSubMenuShown = false;
+    });
   }
 
 }
+
+
+
