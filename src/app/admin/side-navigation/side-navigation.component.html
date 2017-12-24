@@ -30,6 +30,7 @@
           <li  *ngFor="let link of menuLinks" [ngClass]="{'has_submenu': link.hasSubMenu}">
             <a [routerLink]="link.routerLink"
              routerLinkActive="active" 
+             *appSideNavigationDirective="link.hasSubMenu"
              (click)="link.hasSubMenu ? toggleSubMenu(link) : closeSubMenus()">
               <i [ngClass]="['fa', iconClasses[link.key]]"></i> {{link.title}}
               <!-- <span [ngClass]="spanClasses[link.key]"></span> -->

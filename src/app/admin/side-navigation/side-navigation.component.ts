@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { CustomEventHandlerDirective } from './side-navigation.directive';
+import { Component, OnInit, Directive } from '@angular/core';
 import { SideNavigationService, menuLink } from './side-navigation.service';
-
 
 
 @Component({
   selector: 'app-side-navigation',
   templateUrl: './side-navigation.component.html',
-  styleUrls: ['./side-navigation.component.css'],
+  styleUrls: ['./side-navigation.component.css']
+  // directives: [CustomEventHandlerDirective]
 
 })
 

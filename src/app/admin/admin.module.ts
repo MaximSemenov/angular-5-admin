@@ -1,3 +1,4 @@
+import { CustomEventHandlerDirective } from './side-navigation/side-navigation.directive';
 import { MailComponent } from './../mail/mail.component';
 import { PagesComponent } from './../pages/pages.component';
 import { ChartsComponent } from './../dashboard/charts/charts.component';
@@ -29,6 +30,7 @@ import { UsersComponent } from '../users/users.component';
 import { CalendarComponent } from '../pages/calendar/calendar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
 const routes: Routes = [
 
   {
@@ -53,7 +55,8 @@ const routes: Routes = [
     SideNavigationComponent,
     TopToolBarComponent,
     SubMenuComponent,
-    AppRootComponent
+    AppRootComponent,
+    CustomEventHandlerDirective
   ],
   imports: [
     BrowserModule,
