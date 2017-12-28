@@ -24,13 +24,13 @@
 
       <div class="side-nav-block">
         <!-- Sidebar heading -->
-        <h4>Main</h4>
+        <h4 appMyDirective>Main</h4>
         <ul class="list-unstyled">
 
           <li  *ngFor="let link of menuLinks" [ngClass]="{'has_submenu': link.hasSubMenu}">
             <a [routerLink]="link.routerLink"
              routerLinkActive="active" 
-             *appSideNavigationDirective="link.hasSubMenu"
+             *appMyDirective="link.hasSubMenu"
              (click)="link.hasSubMenu ? toggleSubMenu(link) : closeSubMenus()">
               <i [ngClass]="['fa', iconClasses[link.key]]"></i> {{link.title}}
               <!-- <span [ngClass]="spanClasses[link.key]"></span> -->

@@ -1,25 +1,42 @@
-import { Directive, Input, Renderer2, TemplateRef, ElementRef, ViewContainerRef } from '@angular/core';
+import { element } from 'protractor';
+import { Renderer2, ElementRef } from '@angular/core';
+import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 
-
+import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
 
 @Directive({
-    selector: '[appSideNavigationDirective]'
+    selector: '[appMyDirective]'
+
 })
-export class CustomEventHandlerDirective {
+export class CustomEventHandlerDirective implements OnInit {
 
     constructor(
-        private templateRef: TemplateRef<any>,
+        private elementRef: ElementRef,
+        private renderer: Renderer2,
+        // private templateRef: TemplateRef<any>,
         private viewContainer: ViewContainerRef,
-        private element: ElementRef,
-        private renderer: Renderer2) {
+    ) { }
+
+    @Input() set appMyDirective(condition: boolean) {
+        // this.viewContainer.createEmbeddedView(this.templateRef);
+
+        console.log(condition);
+        console.log(typeof condition);
+
+        if (condition) {
+            // this.renderer.listen(this.elementRef.nativeElement, 'click', () => console.log('Hey Hey Hey'));
+        }
+
     }
 
-    @Input() set appSideNavigationDirective(condition: boolean) {
-        this.viewContainer.createEmbeddedView(this.templateRef);
-        console.log(this.element.nativeElement)
-        this.renderer.listen(this.element.nativeElement, 'click', (x) => console.log ('got it', x))
-    }
+    ngOnInit() {
+        if (true) {
+            // this.renderer.listen(this.elementRef.nativeElement, 'click', () => console.log('Hey Hey Hey'));
+        }
 
+
+        // this.elementRef.nativeElement.style.backgroundColor = 'red';
+    }
 
 
 }
