@@ -38,7 +38,7 @@ export class SideNavigationComponent implements OnInit {
     link.isSubMenuShown = !link.isSubMenuShown;
   }
 
-  closeSubMenus() {
+  closeSubMenus(): void {
     this.menuLinks.forEach((mmenuLink: menuLink) => {
       mmenuLink.isSubMenuShown = false;
     });
