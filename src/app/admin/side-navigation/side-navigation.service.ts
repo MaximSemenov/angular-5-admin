@@ -16,9 +16,6 @@ export type menuLink = {
   routerLink: string;
   hasSubMenu: boolean;
   isSubMenuShown?: boolean;
-  // isSubMenuShown: boolean;
-  // spanClasses: spanClasses;
-
 };
 
 export type iconClasses = {
@@ -27,6 +24,11 @@ export type iconClasses = {
 };
 export type spanClasses = {
   [key: string]: boolean;
+
+};
+export type subMenus = {
+  title: string;
+  routerLink: string;
 
 };
 
@@ -51,9 +53,57 @@ export class SideNavigationService {
     ui: '',
     pages: 'fa nav-caret fa-caret-down',
     user: '',
-    mail: 'fa nav-caret fa-caret-down',
-
+    mail: 'fa nav-caret fa-caret-down'
   };
+
+  public subMenus = {
+    pages: [
+      {
+        title: 'Calendar',
+        routerLink: '/calendar'
+      },
+      {
+        title: 'Error Logs',
+        routerLink: '/errors'
+      },
+      {
+        title: 'Gallery',
+        routerLink: '/gallery'
+      },
+      {
+        title: 'Invoice',
+        routerLink: '/invoice'
+      },
+      {
+        title: 'Media',
+        routerLink: '/media'
+      },
+      {
+        title: 'Posts',
+        routerLink: '/posts'
+      },
+      {
+        title: 'Statement',
+        routerLink: '/statement'
+      },
+
+    ],
+    mail: [
+      {
+        title: 'Inbox',
+        routerLink: '/inbox'
+      },
+      {
+        title: 'Mail Read',
+        routerLink: '/mail-read'
+      },
+      {
+        title: 'Mail Compose',
+        routerLink: '/mail-compose'
+      },
+    ]
+  };
+
 
   public menuLinks: menuLink[] = [
     {
@@ -61,20 +111,12 @@ export class SideNavigationService {
       key: 'dashboard',
       routerLink: '/dashboard',
       hasSubMenu: false
-      // isSubMenuShown: false
-      // spanClasses: {
-      //   '': false
-      // }
     },
     {
       title: 'Widget',
       key: 'widget',
       routerLink: '/widget',
       hasSubMenu: false
-      // spanClasses: {
-      //   '': true
-      // }
-
     },
 
     {
@@ -82,11 +124,6 @@ export class SideNavigationService {
       key: 'charts',
       routerLink: '/charts',
       hasSubMenu: false
-      // isSubMenuShown: false
-      // spanClasses: {
-      //   '': true
-      // }
-
     },
 
     {
@@ -94,11 +131,6 @@ export class SideNavigationService {
       key: 'ui',
       routerLink: '/user-interface',
       hasSubMenu: false
-      // isSubMenuShown: false
-      // spanClasses: {
-      //   '': true
-      // }
-
     },
 
     {
@@ -107,12 +139,6 @@ export class SideNavigationService {
       routerLink: '/pages',
       hasSubMenu: true,
       isSubMenuShown: false
-      // spanClasses: {
-      //   'nav-caret': true,
-      //   'fa': true,
-      //   'fa-caret-down': true,
-      //   'fa-caret-up': false
-      // }
     },
 
     {
@@ -120,11 +146,6 @@ export class SideNavigationService {
       key: 'users',
       routerLink: '/users',
       hasSubMenu: false
-      // isSubMenuShown: false
-      // spanClasses: {
-      //   '': true
-      // }
-
     },
 
     {
@@ -133,12 +154,6 @@ export class SideNavigationService {
       routerLink: '/mail',
       hasSubMenu: true,
       isSubMenuShown: false
-      // spanClasses: {
-      //   'nav-caret': true,
-      //   'fa': true,
-      //   'fa-caret-down': true,
-      //   'fa-caret-up': false
-      // }
     }
 
   ];
@@ -149,10 +164,10 @@ export class SideNavigationService {
     return this.menuLinks;
 
   }
-  getClasses(classRequest): {any} {
+  getClasses(classRequest): { any } {
 
     if (!this[classRequest]) {
-      throw Error (
+      throw Error(
         `"SideNavigationService" does not have "${classRequest}" object you have requested. Check spelling or if that object even exists"`);
     }
 

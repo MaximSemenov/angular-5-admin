@@ -30,16 +30,16 @@
           <li  *ngFor="let link of menuLinks" [ngClass]="{'has_submenu': link.hasSubMenu}">
             <a [routerLink]="link.routerLink"
              routerLinkActive="active" 
-             [appMyDirective]="link.hasSubMenu"
-             (click)="link.hasSubMenu ? toggleSubMenu(link) : closeSubMenus()"
->
+             (click)="link.hasSubMenu && toggleSubMenu(link)">
+             <!--[appMyDirective]="link" -->
+<!-- (click)="link.hasSubMenu ? toggleSubMenu(link) : closeSubMenus()" -->
               <i [ngClass]="['fa', iconClasses[link.key]]"></i> {{link.title}}
               <!-- <span [ngClass]="spanClasses[link.key]"></span> -->
 
-              <span *ngIf="link.hasSubMenu" class="fa nav-caret" [ngClass]="{'fa-caret-down': !link.isSubMenuShown, 'fa-caret-up': link.isSubMenuShown}"></span>
+              <span *ngIf="link.hasSubMenu" [@caret]='link.isSubMenuShown' class="fa nav-caret" [ngClass]="{'fa-caret-down': !link.isSubMenuShown, 'fa-caret-up': link.isSubMenuShown}"></span>
 
             </a>
-            <app-sub-menu  *ngIf="link.isSubMenuShown" [subMenuStatus]="menuLinks"></app-sub-menu>
+            <app-sub-menu  *ngIf="link.isSubMenuShown" [keyForSubMenu]="link.key" [subMenus]="subMenus"></app-sub-menu>
 
           </li>
 

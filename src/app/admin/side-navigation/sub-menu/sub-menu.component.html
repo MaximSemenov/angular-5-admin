@@ -1,6 +1,14 @@
-<ul *ngIf="subMenuStatus[4].isSubMenuShown" @slide class="list-unstyled">
+<ul class="list-unstyled" @slide>
+    <li *ngFor="let link of subMenus[keyForSubMenu]">
+        <a [routerLink]="link.routerLink">
+            <i class="fa fa-angle-double-right"></i>{{link.title}}</a>
+    </li>
+</ul>
+
+
+<!-- <ul *ngIf="subMenuStatus[4].isSubMenuShown" class="list-unstyled" [@slide]='stateOfSubMenu'>
     <li>
-        <a routerLink="/calendar"> 
+        <a routerLink="/calendar">
             <i class="fa fa-angle-double-right"></i> Calendar</a>
     </li>
     <li>
@@ -42,6 +50,4 @@
         <a href="mail-write.html">
             <i class="fa fa-angle-double-right"></i> Mail Compose</a>
     </li>
-</ul>
-
-
+</ul> -->

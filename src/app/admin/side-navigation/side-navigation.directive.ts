@@ -12,7 +12,7 @@ import { SideNavigationComponent } from './side-navigation.component';
 })
 export class CustomEventHandlerDirective implements OnInit {
 
-    @Input() appMyDirective;
+    @Input('appMyDirective') link;
 
     public menuLinks;
 
@@ -25,8 +25,8 @@ export class CustomEventHandlerDirective implements OnInit {
 
     ngOnInit() {
 
-        if (this.appMyDirective) {
-            this.renderer.listen(this.elementRef.nativeElement, 'click', this.sideNav.toggleSubMenu);
+        if (this.link.hasSubmenu) {
+            this.renderer.listen(this.elementRef.nativeElement, 'click', () => this.sideNav.toggleSubMenu(this.link));
         }
 
     }
