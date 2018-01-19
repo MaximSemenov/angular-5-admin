@@ -10,23 +10,17 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   animations: [
 
     trigger('caret', [
-      state('closed', style({
-        transform: 'translateX(0)',
-        backgroundColor: 'red'
-      })),
-      state('opened', style({
-        transform: 'translateX(-100%)',
-        backgroundColor: 'green'
-      })),
       transition('false => true', [
-        style({ transform: 'rotate(-180deg)' }),
-        animate(200)
+        style({
+          transform: 'rotate(-180deg)'
+        }),
+        animate('700ms cubic-bezier(0.0, 0.5, 0.5, 1.0)')
       ]),
       transition('true => false', [
         style({ transform: 'rotate(180deg)' }),
-        animate(200)
+        animate('500ms cubic-bezier(0.0, 0.5, 0.5, 1.0)')
       ])
-    ]),
+    ])
 
   ]
   // directives: [CustomEventHandlerDirective]

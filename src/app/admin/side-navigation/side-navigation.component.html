@@ -39,7 +39,7 @@
               <span *ngIf="link.hasSubMenu" [@caret]='link.isSubMenuShown' class="fa nav-caret" [ngClass]="{'fa-caret-down': !link.isSubMenuShown, 'fa-caret-up': link.isSubMenuShown}"></span>
 
             </a>
-            <app-sub-menu  *ngIf="link.isSubMenuShown" [keyForSubMenu]="link.key" [subMenus]="subMenus"></app-sub-menu>
+            <app-sub-menu  *ngIf="link.isSubMenuShown" [subMenus]="subMenus[link.key]"></app-sub-menu>
 
           </li>
 
