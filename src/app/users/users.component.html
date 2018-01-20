@@ -36,12 +36,12 @@
         <li *ngIf="isSearchBarShown">
           <a href="#addnew" class="br-green" data-toggle="tab" id="aSearch">
             <i class="fa fa-search green"></i>
-          </a>
+          </a> 
 
         </li>
         <li class="liSearch" *ngIf="isSearchBarShown">
 
-          <input id="userSearch" placeholder="Search...">
+          <input [(ngModel)]="savedUsers" id="userSearch" placeholder="Search..." (keyup)="liveSearch($event.target.value)">
 
         </li>
       </ul>
@@ -51,13 +51,13 @@
           <app-users-list [users]="users"></app-users-list>
           <!-- <app-add-new-user></app-add-new-user>
           <app-edit-user></app-edit-user> -->
-
+          <router-outlet name="usersoutlet"></router-outlet>
           <ul class="pagination pull-right">
             <li>
               <a href="#">&laquo;</a>
             </li>
-            <li>
-              <a href="#">1</a>
+            <li> 
+              <a routerLink="/userslist">1</a>
             </li>
             <li>
               <a href="#">2</a>

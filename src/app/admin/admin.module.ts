@@ -29,6 +29,7 @@ import { UserInterfaceComponent } from '../user-interface/user-interface.compone
 import { UsersComponent } from '../users/users.component';
 import { CalendarComponent } from '../pages/calendar/calendar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UsersListComponent } from '../users/users-list/users-list.component';
 
 
 const routes: Routes = [
@@ -41,7 +42,7 @@ const routes: Routes = [
       { path: 'charts', data: { title: 'Charts' }, component: ChartsComponent },
       { path: 'user-interface', data: { title: 'User Interface' }, component: UserInterfaceComponent },
       { path: 'pages', data: { title: 'Pages' }, component: PagesComponent },
-      { path: 'users', data: { title: 'Users' }, component: UsersComponent },
+      { path: 'users', data: { title: 'Users' }, component: UsersComponent},
       { path: 'mail', data: { title: 'Mail' }, component: MailComponent }
 
     ]
