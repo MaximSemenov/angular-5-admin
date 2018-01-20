@@ -1,5 +1,13 @@
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+} from '@angular/animations';
+import { FormControl } from '@angular/forms';
 
 
 type users = {
@@ -14,15 +22,31 @@ type users = {
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  styleUrls: ['./users.component.css'],
+  animations: [
+    trigger('search', [
+      state('void', style({ transform: 'translateX(-5%)' })),
+      state('*', style({ width: '245px' })),
+      transition('void => *', animate('500ms ease-in')
+      )
+    ])
+  ]
 })
 
 
 export class UsersComponent implements OnInit {
 
   public isSearchBarShown: boolean = false;
-  public savedUsers;
   public filteredUsers;
+  public pagination;
+  public pageLinks;
+  public totalPages;
+  public startPage;
+  public endPage;
+  public currentPage;
+
+  public searchControl = new FormControl('');
+
 
 
   public users: users[] = [
@@ -238,34 +262,40 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.filteredUsers = Object.assign([], this.users);
+    this.searchControl.valueChanges.subscribe((value: string) => this.liveSearch(value));
+
+      this.filteredUsers = Object.assign([], this.users);
+
+    this.totalPages = this.users.length / 10;
+
+    if (this.totalPages <= 10) {
+      this.pageLinks = Array(1).fill(1);
+      this.startPage = 1;
+    }
+
+    //  this.endPage = this.totalPages;
+
   }
 
   liveSearch(value: string): void {
 
-    this.users = this.filteredUsers;
 
     if (!value) {
       this.users = this.filteredUsers;
       return;
     }
 
-    this.users = this.users.filter(item => {
-      let result = [];
-      for (let key in item) {
+    this.users = this.filteredUsers.filter(item => {
+      let result = false;
+      ['username', 'name', 'email', 'dateJoined', 'role'].forEach(key => {
 
-        if (item.hasOwnProperty(key)) {
-
-          result.push(item[key].toLowerCase().indexOf(value.toLowerCase()) > -1);
+        if (item[key].toLowerCase().includes(value.toLowerCase())) {
+          result = true;
         }
 
-      }
-      for (let i of result) {
-        if (i === true) {
-          return result;
-        }
-      }
-      return false;
+      });
+
+      return result;
     });
 
   }

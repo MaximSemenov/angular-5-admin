@@ -1,3 +1,4 @@
+
 <div class="table-responsive">
   <table class="table table-bordered">
     <tr class="active">
@@ -12,7 +13,7 @@
       <th>Action</th>
     </tr>
 
-    <tr *ngFor="let user of users | slice:0:10">
+    <tr *ngFor="let user of users | slice:start:end">
       <td>
         <input type="checkbox">
       </td>
