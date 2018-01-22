@@ -42,6 +42,7 @@ export class UsersComponent implements OnInit {
     this.usersService.getUsers().subscribe((users) => {
       this.users = users;
       this.filteredUsers = Object.assign([], this.users);
+  
     });
     this.searchControl.valueChanges.subscribe((value: string) => this.liveSearch(value));
     // this.filteredUsers = Object.assign([], this.users);
@@ -58,7 +59,7 @@ export class UsersComponent implements OnInit {
 
     this.users = this.filteredUsers.filter(item => {
       let result = false;
-      ['username', 'name', 'email', 'dateJoined', 'role'].forEach(key => {
+      ['userName', 'name', 'email', 'dateJoined', 'role'].forEach(key => {
 
         if (item[key].toLowerCase().includes(value.toLowerCase())) {
           result = true;
