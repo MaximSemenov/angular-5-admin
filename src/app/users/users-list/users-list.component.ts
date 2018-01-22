@@ -1,39 +1,42 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, OnChanges, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { SimpleChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
   styleUrls: ['./users-list.component.css']
 })
-export class UsersListComponent implements OnInit {
+export class UsersListComponent implements OnInit, OnChanges {
 
-  public startElement: number;
-  public endElement: number;
   public activePage: number;
-
+  public userFilter: number;
+  public filteredUsers;
 
   @Input() users;
+  // @Input() filteredUsers;
 
   constructor(private activatedRoute: ActivatedRoute) {
     this.activatedRoute.queryParams.subscribe(params => {
-
-      // if (!params.page || +params.page === 1) {
-      //   (console.log('popal'))
-      //   this.startElement = 0;
-      //   this.endElement = 9;
-      //   return;
-      // }
-      // this.startElement = params.page * 10;
-      // this.endElement = this.startElement + 11;
-
-      
-
+      if (params.page) {
+        this.userFilter = params.page * 10;
+        this.users = this.filteredUsers;
+        this.users = this.users.filter((item, index) => index <= this.userFilter && index >= this.userFilter - 9);
+      }
     });
   }
 
   ngOnInit() {
-    console.log(this.startElement);
+
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+
+    if (!changes['users'].isFirstChange()) {
+      this.filteredUsers = Object.assign([], this.users);
+      this.users = this.users.filter((item, index) => index <= 9);
+    }
+
   }
 
 }

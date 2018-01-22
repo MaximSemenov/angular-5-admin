@@ -11,11 +11,11 @@ export class PaginationComponent implements OnInit {
 
 
   constructor(private activatedRoute: ActivatedRoute) {
-    this.activatedRoute.queryParams.subscribe(params => console.log(params));
+    // this.activatedRoute.queryParams.subscribe(params => console.log(params));
   }
 
   ngOnInit() {
-    console.log(this.quantityOfUsers);
+
   }
 
 }
