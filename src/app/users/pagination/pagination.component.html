@@ -1,0 +1,14 @@
+<ul class="pagination pull-right">
+    <li>
+      <a href="#">&laquo;</a>
+    </li>
+    <li *ngFor='let page of [1,2,3,4,5]'>
+
+      <!-- <a routerLink="/users" [queryParams]="{page: page}" routerLinkActive="active">{{page}}</a> -->
+      <a routerLink="/users" [queryParams]="{page: page}" routerLinkActive="active">{{page}}</a>
+    </li>
+
+    <li>
+      <a href="#">&raquo;</a>
+    </li>
+  </ul>

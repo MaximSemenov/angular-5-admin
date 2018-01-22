@@ -7,6 +7,8 @@ import { AddNewUserComponent } from './add-new-user/add-new-user.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PaginationComponent } from './pagination/pagination.component';
+import { UsersService } from './users.service';
 
 
 const routes: Routes = [
@@ -29,12 +31,14 @@ const routes: Routes = [
     AddNewUserComponent,
     UsersListComponent,
     EditUserComponent,
-    AddNewUserComponent
+    AddNewUserComponent,
+    PaginationComponent
 
   ],
   exports: [
     UsersComponent
-  ]
+  ],
+  providers: [UsersService]
 })
 
 export class UsersModule { }

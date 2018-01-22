@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { CustomEventHandlerDirective } from './side-navigation/side-navigation.directive';
 import { MailComponent } from './../mail/mail.component';
 import { PagesComponent } from './../pages/pages.component';
@@ -69,7 +70,8 @@ const routes: Routes = [
     UserInterfaceModule,
     UsersModule,
     WidgetModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [SideNavigationService],
   bootstrap: [AppRootComponent]

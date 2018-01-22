@@ -1,24 +1,29 @@
-
 <div class="table-responsive">
   <table class="table table-bordered">
     <tr class="active">
+
       <th>
         <input type="checkbox">
       </th>
-      <th>Username</th>
       <th>Name</th>
+      <th>Username</th>
+   
       <th>Email</th>
       <th>Date Joined</th>
       <th>Role</th>
       <th>Action</th>
     </tr>
 
-    <tr *ngFor="let user of users | slice:start:end">
+    <tr *ngFor="let user of users">
+    <!-- <tr *ngFor="let user of users | slice:startElement:endElement; index as i"> -->
+
       <td>
         <input type="checkbox">
       </td>
-      <td>{{user.username}}</td>
+
+
       <td>{{user.name}}</td>
+      <td>{{user.userName}}</td>
       <td>
         <a href="#">{{user.email}}</a>
       </td>
