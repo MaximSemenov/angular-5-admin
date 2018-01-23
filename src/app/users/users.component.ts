@@ -42,7 +42,7 @@ export class UsersComponent implements OnInit {
     this.usersService.getUsers().subscribe((users) => {
       this.users = users;
       this.filteredUsers = Object.assign([], this.users);
-  
+
     });
     this.searchControl.valueChanges.subscribe((value: string) => this.liveSearch(value));
     // this.filteredUsers = Object.assign([], this.users);

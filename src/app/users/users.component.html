@@ -20,38 +20,31 @@
     <div class="page-tabs">
       <!-- Nav tabs -->
       <ul class="nav nav-tabs">
-        <!-- <li class="active">
-          <a href="#ausers" class="br-lblue" data-toggle="tab">
-            <i class="fa fa-user lblue"></i> Users</a>
-        </li> -->
+        <li>
+          <div class="input-group">
+
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button">
+                <i class="fa fa-search"></i>
+              </button>
+            </span>
+            <input @search class="form-control" [formControl]="searchControl" placeholder="Search..." type="text">
+          </div>
+
+        </li>
         <li>
           <a routerLink="/add-new-user" class="br-green" data-toggle="tab">
             <i class="fa fa-plus green"></i> Add New</a>
         </li>
-        <li>
-          <a class="br-green" style="cursor: pointer" data-toggle="tab" (click)="isSearchBarShown = !isSearchBarShown" *ngIf="!isSearchBarShown">
-            <i class="fa fa-search green"></i> Search</a>
 
-        </li>
-        <li *ngIf="isSearchBarShown">
-          <a href="#addnew" class="br-green" data-toggle="tab" id="aSearch">
-            <i class="fa fa-search green"></i>
-          </a>
-
-        </li>
-        <li class="liSearch" *ngIf="isSearchBarShown">
-
-          <input @search id="userSearch" [formControl]="searchControl" placeholder="Search...">
-
-        </li>
       </ul>
 
-      <div class="tab-content"> 
+      <div class="tab-content">
         <div class="tab-pane fade active in" id="ausers">
 
           <app-users-list [users]="users"></app-users-list>
           <app-pagination [quantityOfUsers]='users?.length'></app-pagination>
-      
+
           <div class="clearfix"></div>
         </div>
 
