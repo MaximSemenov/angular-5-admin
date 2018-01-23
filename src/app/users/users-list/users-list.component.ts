@@ -21,7 +21,7 @@ export class UsersListComponent implements OnInit, OnChanges {
       if (params.page) {
         this.userFilter = params.page * 10;
         this.users = this.filteredUsers;
-        this.users = this.users.filter((item, index) => index <= this.userFilter && index >= this.userFilter - 9);
+        this.users = this.users.filter((item, index) => index < this.userFilter && index >= this.userFilter - 10);
       }
     });
   }

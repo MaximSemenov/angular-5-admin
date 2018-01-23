@@ -45,8 +45,6 @@ export class UsersComponent implements OnInit {
 
     });
     this.searchControl.valueChanges.subscribe((value: string) => this.liveSearch(value));
-    // this.filteredUsers = Object.assign([], this.users);
-
   }
 
   liveSearch(value: string): void {
