@@ -27,12 +27,6 @@ export class UsersComponent implements OnInit {
   public users: User[];
   public isSearchBarShown: boolean = false;
   public filteredUsers;
-  public pagination;
-  public pageLinks;
-  public totalPages;
-  public startPage;
-  public endPage;
-  public currentPage;
   public searchControl = new FormControl('');
 
   constructor(private usersService: UsersService) { }

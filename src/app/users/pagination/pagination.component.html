@@ -2,9 +2,8 @@
     <li>
       <a href="#">&laquo;</a>
     </li>
-    <li *ngFor='let page of pages'>
+    <li *ngFor='let page of pages'> 
 
-      <!-- <a routerLink="/users" [queryParams]="{page: page}" routerLinkActive="active">{{page}}</a> -->
       <a routerLink="/users" [queryParams]="{page: page}" routerLinkActive="active">{{page}}</a>
     </li>
 

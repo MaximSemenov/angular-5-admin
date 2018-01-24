@@ -20,6 +20,7 @@ export class PaginationComponent implements OnInit, OnChanges {
 
     if (!changes['quantityOfUsers'].isFirstChange()) {
       const lastPage = Math.ceil(this.quantityOfUsers / 10);
+      
       this.pages = Array.from(Array(lastPage + 1).keys()).slice(1);
     }
 

@@ -14,7 +14,9 @@ import { UsersService } from './users.service';
 const routes: Routes = [
 
 
- /// { path: 'users/:userId', component: UsersListComponent }
+//  / { path: 'users/:userId', component: UsersListComponent }
+{ path: 'users/add-new-user', component: AddNewUserComponent }
+
 
 
 ];
