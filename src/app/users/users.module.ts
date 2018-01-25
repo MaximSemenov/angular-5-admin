@@ -15,7 +15,7 @@ const routes: Routes = [
 
 
 //  / { path: 'users/:userId', component: UsersListComponent }
-{ path: 'users/add-new-user', component: AddNewUserComponent }
+// { path: 'users/add-new-user', component: AddNewUserComponent }
 
 
 

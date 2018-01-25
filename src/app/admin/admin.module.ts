@@ -31,6 +31,7 @@ import { UsersComponent } from '../users/users.component';
 import { CalendarComponent } from '../pages/calendar/calendar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UsersListComponent } from '../users/users-list/users-list.component';
+import { AddNewUserComponent } from '../users/add-new-user/add-new-user.component';
 
 
 const routes: Routes = [
@@ -43,11 +44,11 @@ const routes: Routes = [
       { path: 'charts', data: { title: 'Charts' }, component: ChartsComponent },
       { path: 'user-interface', data: { title: 'User Interface' }, component: UserInterfaceComponent },
       { path: 'pages', data: { title: 'Pages' }, component: PagesComponent },
-  //     {
-  //       path: 'users', data: { title: 'Users' }, component: UsersComponent, children: [
-  //         { path: 'add-new-user', component: AddNewUserComponent }
-  //   ]
-  // },
+      {
+        path: 'users', data: { title: 'Users' }, component: UsersComponent, children: [
+          { path: 'add', component: AddNewUserComponent },
+        ]
+      },
   { path: 'mail', data: { title: 'Mail' }, component: MailComponent }
 
 ]
