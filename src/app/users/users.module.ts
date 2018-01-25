@@ -24,17 +24,16 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule
   ],
   declarations: [
     UsersComponent,
-    AddNewUserComponent,
     UsersListComponent,
     EditUserComponent,
-    AddNewUserComponent,
-    PaginationComponent
+    PaginationComponent,
+    AddNewUserComponent
 
   ],
   exports: [

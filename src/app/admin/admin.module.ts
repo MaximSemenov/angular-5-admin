@@ -43,10 +43,14 @@ const routes: Routes = [
       { path: 'charts', data: { title: 'Charts' }, component: ChartsComponent },
       { path: 'user-interface', data: { title: 'User Interface' }, component: UserInterfaceComponent },
       { path: 'pages', data: { title: 'Pages' }, component: PagesComponent },
-      { path: 'users', data: { title: 'Users' }, component: UsersComponent},
-      { path: 'mail', data: { title: 'Mail' }, component: MailComponent }
+  //     {
+  //       path: 'users', data: { title: 'Users' }, component: UsersComponent, children: [
+  //         { path: 'add-new-user', component: AddNewUserComponent }
+  //   ]
+  // },
+  { path: 'mail', data: { title: 'Mail' }, component: MailComponent }
 
-    ]
+]
   }
 ];
 

@@ -9,6 +9,8 @@ import { FormControl, FormGroup, FormArray } from '@angular/forms';
 export class AddNewUserComponent implements OnInit {
 
   public newUserControl: FormGroup;
+  public inputsTitles = ['Name', 'UserName', 'Email', 'Password', 'Country'];
+  // public radioSex: FormControl;
 
   constructor() { }
 
@@ -21,10 +23,16 @@ export class AddNewUserComponent implements OnInit {
         new FormControl('Email'),
         new FormControl('Password'),
         new FormControl('Country')
-      ])
+      ]),
+      radioSex: new FormControl('')
     });
 
+     this.newUserControl.valueChanges.subscribe((value) => console.log(value));
 
+  }
+
+  onSubmitNewUser() {
+console.log(this.newUserControl);
   }
 
 }
