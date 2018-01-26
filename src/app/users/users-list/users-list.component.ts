@@ -15,23 +15,22 @@ export class UsersListComponent implements OnInit {
   public filteredUsers;
 
   @Input() users;
-  // @Input() filteredUsers;
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    // this.activatedRoute.queryParams.subscribe((params) => {
-   
-    //   if (!params || !params.page) {
-    //     this.router.navigateByUrl('/users?page=1');
-    //     return false;
-    //   }
-    //   const page = +params.page;
+    this.activatedRoute.queryParams.subscribe((params) => {
+      // debugger;
+      if (!params || !params.page) {
+        this.router.navigateByUrl('/users?page=1');
+        return false;
+      }
+      const page = +params.page;
 
-    //   this.userFilter = page * 10;
-    //   this.filteredUsers = this.users.filter((item, index) => index < this.userFilter && index >= this.userFilter - 10);
+      this.userFilter = page * 10;
+      this.filteredUsers = this.users.filter((item, index) => index < this.userFilter && index >= this.userFilter - 10);
 
-    // });
+    });
   }
 
 }
