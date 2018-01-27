@@ -26,7 +26,6 @@ export class UsersListComponent implements OnInit, OnChanges {
         return false;
       }
       this.userFilter = +params.page * 10;
-      console.log(this.userFilter);
       this.filteredUsers = this.users.slice(this.userFilter - 10, this.userFilter);
     });
   }
@@ -38,3 +37,4 @@ export class UsersListComponent implements OnInit, OnChanges {
     }
   }
 }
+

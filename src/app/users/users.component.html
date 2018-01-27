@@ -24,15 +24,17 @@
           <div class="input-group">
 
             <span class="input-group-btn">
-              <button class="btn btn-default" type="button">
+              <button class="btn btn-default" [ngClass]="{'neon': isSearchBarExpanded}" type="button">
                 <i class="fa fa-search"></i>
               </button>
             </span>
-            <input @search class="form-control" [formControl]="searchControl" placeholder="Search..." type="text">
+            <input [@search]="isSearchBarExpanded" class="form-control" [formControl]="searchControl" placeholder="Search..." type="text"
+              (focus)="isSearchBarExpanded = !isSearchBarExpanded" (focusout)="isSearchBarExpanded = !isSearchBarExpanded">
+
           </div>
 
         </li>
-        <li>
+        <li id="addNewUserbutton">
           <a routerLink="add" class="br-green" data-toggle="tab">
             <i class="fa fa-plus green"></i> Add New</a>
         </li>

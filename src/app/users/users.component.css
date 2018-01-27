@@ -1,14 +1,9 @@
 #userSearch {
     font-size: 12px;
-    /* border: 0px; */
-    /* border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px; */
     box-sizing: border-box;
     padding: 5px 7px;
     margin-right: 2px;
-    /* margin-left: -8px; */
     height: 28px !important;
-    /* width: 240px; */
 }
 
 .input-group-btn {
@@ -30,4 +25,8 @@
 
 .neon {
     border-color: #66afe9
+}
+
+#addNewUserbutton {
+    float: right;
 }

@@ -10,14 +10,16 @@ import { FormControl } from '@angular/forms';
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css'],
+
   animations: [
     trigger('search', [
-      state('void', style({ transform: 'translateX(-5%)' })),
-      state('*', style({ width: '245px' })),
-      transition('void => *', animate('500ms ease-in')
+      state('false', style({ transform: 'translateX(-5%)' })),
+      state('true', style({ width: '300px' })),
+      transition('false <=> true', animate('600ms ease-in')
       )
     ])
   ]
+
 })
 
 
@@ -28,6 +30,7 @@ export class UsersComponent implements OnInit {
   public isSearchBarShown: boolean = false;
   public filteredUsers;
   public searchControl = new FormControl('');
+  public isSearchBarExpanded: boolean = false;
 
   constructor(private usersService: UsersService) { }
 
@@ -63,4 +66,8 @@ export class UsersComponent implements OnInit {
     });
 
   }
+
+  // do() {
+  //   console.log('sdasd');
+  // }
 }
