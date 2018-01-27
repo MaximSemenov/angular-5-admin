@@ -39,7 +39,6 @@ export class TopToolBarComponent implements OnInit {
       .switchMap((currentRoute: ActivatedRoute) => currentRoute.data)
       .pluck('title')
       .subscribe((title: string) => {
-
         this.navigationTitle = title;
         this.iconClass = this.navigationService.getIconClass(title);
 

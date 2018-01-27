@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormArray } from '@angular/forms';
+import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-new-user',
@@ -9,8 +9,8 @@ import { FormControl, FormGroup, FormArray } from '@angular/forms';
 export class AddNewUserComponent implements OnInit {
 
   public newUserControl: FormGroup;
-  public inputsTitles = ['Name', 'UserName', 'Email', 'Password', 'Country'];
-  // public radioSex: FormControl;
+  public inputsTitles = ['Name', 'UserName', 'Email', 'Password'];
+
 
   constructor() { }
 
@@ -18,21 +18,27 @@ export class AddNewUserComponent implements OnInit {
 
     this.newUserControl = new FormGroup({
       newUser: new FormArray([
-        new FormControl('Name'),
+        new FormControl('Name', [Validators.minLength(2), Validators.required]),
         new FormControl('UserName'),
-        new FormControl('Email'),
-        new FormControl('Password'),
-        new FormControl('Country')
+        new FormControl('Email', Validators.email),
+        new FormControl('Password', [Validators.minLength(6)])
       ]),
-      radioSex: new FormControl('')
+      role: new FormControl('')
     });
 
-     this.newUserControl.valueChanges.subscribe((value) => console.log(value));
+    this.newUserControl.valueChanges.subscribe((value) => console.log(value));
+    this.newUserControl.statusChanges.subscribe((value) => console.log(value));
+
+    // console.log (this.newUserControl.get('newUser').controls);
 
   }
 
   onSubmitNewUser() {
-console.log(this.newUserControl);
+    console.log(this.newUserControl);
+  }
+
+  resetAddNewUserForm() {
+    this.newUserControl.reset();
   }
 
 }
