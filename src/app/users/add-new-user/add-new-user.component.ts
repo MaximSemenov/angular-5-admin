@@ -8,7 +8,7 @@ import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
 })
 export class AddNewUserComponent implements OnInit {
 
-  public newUserControl: FormGroup;
+  public newUserControlGroup: FormGroup;
   public inputsTitles = ['Name', 'UserName', 'Email', 'Password'];
 
 
@@ -16,29 +16,28 @@ export class AddNewUserComponent implements OnInit {
 
   ngOnInit() {
 
-    this.newUserControl = new FormGroup({
-      newUser: new FormArray([
-        new FormControl('Name', [Validators.minLength(2), Validators.required]),
-        new FormControl('UserName'),
-        new FormControl('Email', Validators.email),
-        new FormControl('Password', [Validators.minLength(6)])
-      ]),
-      role: new FormControl('')
+    this.newUserControlGroup = new FormGroup({
+      'name': new FormControl('', [Validators.minLength(2), Validators.required]),
+      'userName': new FormControl('', [Validators.required, Validators.minLength(2)]),
+      'email': new FormControl('', [Validators.required, Validators.email]),
+      'password': new FormControl('', [Validators.required, Validators.minLength(6)]),
+      'role': new FormControl('User')
     });
 
-    this.newUserControl.valueChanges.subscribe((value) => console.log(value));
-    this.newUserControl.statusChanges.subscribe((value) => console.log(value));
-
+    // this.newUserControl.valueChanges.subscribe((value) => console.log(value));
+    // this.newUserControl.statusChanges.subscribe((value) => console.log(value));
     // console.log (this.newUserControl.get('newUser').controls);
 
   }
 
   onSubmitNewUser() {
-    console.log(this.newUserControl);
+
+
+
   }
 
-  resetAddNewUserForm() {
-    this.newUserControl.reset();
+  resetAddNewUserForm(): void {
+    this.newUserControlGroup.reset();
   }
 
 }
