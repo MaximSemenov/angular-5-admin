@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
+import { isArray } from 'util';
 
 @Component({
   selector: 'app-add-new-user',
@@ -10,6 +11,7 @@ export class AddNewUserComponent implements OnInit {
 
   public newUserControlGroup: FormGroup;
   public inputsTitles = ['Name', 'UserName', 'Email', 'Password'];
+  public isSuccessMessageShown: boolean = false;
 
 
   constructor() { }
@@ -24,15 +26,14 @@ export class AddNewUserComponent implements OnInit {
       'role': new FormControl('User')
     });
 
-    // this.newUserControl.valueChanges.subscribe((value) => console.log(value));
-    // this.newUserControl.statusChanges.subscribe((value) => console.log(value));
-    // console.log (this.newUserControl.get('newUser').controls);
-
   }
 
-  onSubmitNewUser() {
+  onSubmitNewUser(): void {
 
-
+    let users = JSON.parse(localStorage.getItem('users'));
+    users.unshift(this.newUserControlGroup.value);
+    localStorage.users = JSON.stringify(users);
+    this.resetAddNewUserForm();
 
   }
 

@@ -18,7 +18,14 @@ export class UsersService {
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>('./assets/data/users.json');
-  }
 
+    if (!localStorage.users) {
+      return this.http.get<User[]>('./assets/data/users.json').map(users => {
+        localStorage.users = JSON.stringify(users);
+        return JSON.parse(localStorage.users);
+      });
+    }
+
+    return Observable.of(JSON.parse(localStorage.users));
+  }
 }

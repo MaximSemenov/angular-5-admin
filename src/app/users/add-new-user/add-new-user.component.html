@@ -47,11 +47,15 @@
     </div>
     <div class="form-group">
       <div class="col-md-offset-2 col-md-10">
-        <button type="submit" class="btn btn-primary">Add</button>
-        <button type="reset" class="btn btn-default" (click)="resetAddNewUserForm()">Reset</button>
-        <button type="reset" class="btn btn-default">Cancel</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!newUserControlGroup.valid" [title]="newUserControlGroup.valid ? 'Click to submit the form' : 'Please fill the form above'">Add</button>
+        <button type="reset" class="btn btn-default" (click)="resetAddNewUserForm()" title="Click to reset the form">Reset</button>
+        <button type="reset" class="btn btn-default" title="Click to cancel">Cancel</button>
+        <span class="alert alert-success">You successfully added a new user!</span>
+   
       </div>
+
     </div>
+
   </form>
 
 
