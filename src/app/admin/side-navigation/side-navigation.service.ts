@@ -178,6 +178,7 @@ export class SideNavigationService {
 
 
   getIconClass(title: string): string {
+
     return this.titleIconsClasses[this.menuLinks.find(link => link.title === title).key];
 
 

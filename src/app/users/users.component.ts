@@ -42,11 +42,12 @@ export class UsersComponent implements OnInit {
 
     });
     this.searchControl.valueChanges.subscribe((value: string) => this.liveSearch(value));
+
   }
 
   liveSearch(value: string): void {
 
-
+    
     if (!value) {
       this.users = this.filteredUsers;
       return;
@@ -56,6 +57,7 @@ export class UsersComponent implements OnInit {
       let result = false;
       ['userName', 'name', 'email', 'dateJoined', 'role'].forEach(key => {
 
+        // console.log (item);
         if (item[key].toLowerCase().includes(value.toLowerCase())) {
           result = true;
         }

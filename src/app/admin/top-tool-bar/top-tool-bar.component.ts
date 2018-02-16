@@ -30,6 +30,7 @@ export class TopToolBarComponent implements OnInit {
     this.router.events
       .filter((event: NavigationEnd) => event instanceof NavigationEnd)
       .map(() => {
+
         let route: ActivatedRoute = this.activatedRoute;
         while (route.firstChild) {
           route = route.firstChild;
@@ -40,7 +41,7 @@ export class TopToolBarComponent implements OnInit {
       .pluck('title')
       .subscribe((title: string) => {
         this.navigationTitle = title;
-        this.iconClass = this.navigationService.getIconClass(title);
+        // this.iconClass = this.navigationService.getIconClass(title);
 
       });
 

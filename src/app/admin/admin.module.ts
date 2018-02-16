@@ -1,3 +1,4 @@
+import { UsersListComponent } from './../users/users-list/users-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomEventHandlerDirective } from './side-navigation/side-navigation.directive';
 import { MailComponent } from './../mail/mail.component';
@@ -30,7 +31,6 @@ import { UserInterfaceComponent } from '../user-interface/user-interface.compone
 import { UsersComponent } from '../users/users.component';
 import { CalendarComponent } from '../pages/calendar/calendar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { UsersListComponent } from '../users/users-list/users-list.component';
 import { AddNewUserComponent } from '../users/add-new-user/add-new-user.component';
 
 
@@ -46,12 +46,14 @@ const routes: Routes = [
       { path: 'pages', data: { title: 'Pages' }, component: PagesComponent },
       {
         path: 'users', data: { title: 'Users' }, component: UsersComponent, children: [
+          { path: '', redirectTo: 'list', pathMatch: 'full' },
           { path: 'add', component: AddNewUserComponent },
+          { path: 'list', component: UsersListComponent }
         ]
       },
-  { path: 'mail', data: { title: 'Mail' }, component: MailComponent }
+      { path: 'mail', data: { title: 'Mail' }, component: MailComponent }
 
-]
+    ]
   }
 ];
 
